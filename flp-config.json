@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "bootcamptest",
+        "description": "Boot Camp App",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#bootcamptest-Display",
+        "navigationComponentName": "bootcamp",
+        "intentSemanticObject": "bootcamptest",
+        "intentAction": "Display",
+        "html5ApplicationName": "bootcamptest",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "b9733a19-3353-4c4a-bff5-01574ad4c9d4"
+        ],
+        "contentPackages": [
+            "9166f16a-3df6-4a82-956d-fa9645e7a0b2"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Title",
+        "subtitle": "Subtitle",
+        "searchKeywords": "Title,Subtitle",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema Namespace="bootcamp.Service"
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="JobsType">
+                <Key>
+                    <PropertyRef Name="JOBID" />
+                </Key>
+                <Property Name="JOBID" Type="Edm.String" Nullable="false" MaxLength="10" />
+                <Property Name="DESCRIPTION" Type="Edm.String" MaxLength="100" />
+                <Property Name="DEPARTMENT" Type="Edm.String" MaxLength="50" />
+                <Property Name="VALID_TILL" Type="Edm.DateTime" />
+                <Property Name="SYSTEM.CREATED_ON" Type="Edm.DateTime" />
+                <Property Name="SYSTEM.CREATED_BY" Type="Edm.String" MaxLength="10" />
+                <NavigationProperty Name="Job_Enroll" Relationship="bootcamp.Service.Jobs_EnrolmentsType" FromRole="JobsPrincipal" ToRole="EnrolmentsDependent" />
+            </EntityType>
+            <EntityType Name="EnrolmentsType">
+                <Key>
+                    <PropertyRef Name="JOBID" />
+                    <PropertyRef Name="PERSONID" />
+                </Key>
+                <Property Name="JOBID" Type="Edm.String" Nullable="false" MaxLength="10" />
+                <Property Name="PERSONID" Type="Edm.String" Nullable="false" MaxLength="10" />
+                <Property Name="FIRST_NAME" Type="Edm.String" MaxLength="50" />
+                <Property Name="LAST_NAME" Type="Edm.String" MaxLength="50" />
+                <Property Name="EMAIL" Type="Edm.String" MaxLength="50" />
+                <Property Name="LOCATION" Type="Edm.String" MaxLength="50" />
+                <Property Name="JOB_JOBID" Type="Edm.String" MaxLength="10" />
+                <Property Name="SYSTEM.CREATED_ON" Type="Edm.DateTime" />
+                <Property Name="SYSTEM.CREATED_BY" Type="Edm.String" MaxLength="10" />
+            </EntityType>
+            <Association Name="Jobs_EnrolmentsType">
+                <End Type="bootcamp.Service.JobsType" Role="JobsPrincipal" Multiplicity="1"/>
+                <End Type="bootcamp.Service.EnrolmentsType" Role="EnrolmentsDependent" Multiplicity="*"/>
+            </Association>
+            <EntityContainer Name="jobs" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Jobs" EntityType="bootcamp.Service.JobsType" />
+                <EntitySet Name="Enrolments" EntityType="bootcamp.Service.EnrolmentsType" />
+                <AssociationSet Name="Jobs_Enrolments" Association="bootcamp.Service.Jobs_EnrolmentsType">
+                    <End Role="JobsPrincipal" EntitySet="Jobs"/>
+                    <End Role="EnrolmentsDependent" EntitySet="Enrolments"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
